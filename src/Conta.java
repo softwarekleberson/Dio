@@ -7,52 +7,49 @@ public abstract class Conta implements IConta {
 	protected int agencia;
 	protected int numero;
 	protected double saldo;
-	protected Cliente cliente;
 	
-	public Conta(Cliente cliente ,double saldo) {
+	protected Cliente clientes;
+	protected InformacoesExtrato extrato;
+	
+	public Conta(Cliente cliente ) {
 		
 		this.agencia = AGENCIA_PADRAO;
 		this.numero += NUMERO_SEQUENCIAL++;
 		
-		this.cliente = cliente;
-		setSaldo(saldo);
-	}
-	
-	
-	protected void informacoesExtrato() {
-		System.out.println("----- Extrato -------");
-		System.out.println(String.format("Nome cliente %s : ", this.cliente.getNome()));
-		System.out.println(String.format("Agencia %d : ", this.numero));
-		System.out.println(String.format("Agencia %d", this.agencia));
-		System.out.println(String.format("Saldo %.2f", this.saldo));
-		System.out.println("--------Fim-----------");
+		this.clientes = cliente;
+
 	}
 
-	
 	@Override
 	public void sacar(double valor) {
-		if(this.saldo >= valor ) {
+		
+		if(this.saldo >= valor  && valor > 0) {
 			this.saldo -= valor;
 		}
+		else {
+			throw new IllegalArgumentException("Saldo insuficiente ou valor irregular");
+		}
 	}
-	
 	
 	@Override
 	public void depositar(double valor) {
 		if(valor > 0) {
 			this.saldo += valor;
-		}	
+		}
+		else {
+			throw new IllegalArgumentException("Saldo do deposito inferior ou igual a zero");
+		}
 	}
-	
 	
 	@Override
-	public void transferir(IConta contaDestino, double valor) {
-		if(valor <= this.saldo) {
+	public void transferir(Conta contaDestino, double valor) {
+		if(valor <= this.saldo && valor > 0) {
 			this.saldo -= valor;
 			contaDestino.depositar(valor);
-		}	
+		}else {
+			throw new IllegalArgumentException("Saldo insuficiente ou inferior a zero");
+		}
 	}
-	
 	
 	public int getAgencia() {
 		return agencia;
@@ -66,8 +63,12 @@ public abstract class Conta implements IConta {
 		return saldo;
 	}
 	
-	public void setSaldo(double saldo) {
-		if(saldo > 0)
-		this.saldo = saldo;
+	public Cliente getClientes() {
+		return clientes;
 	}
+	
+	public InformacoesExtrato getExtrato() {
+		return extrato;
+	}
+	
 }

@@ -1,15 +1,17 @@
 
-public class ContaCorrente extends Conta {
-
-	public ContaCorrente(Cliente cliente, double saldo) {
-		super(cliente, saldo);
+public final class ContaCorrente extends Conta implements IExtrato {
+	
+	private Cliente cliente;
+	private ContaCorrente contaCorrente;
+	
+	public ContaCorrente(Cliente cliente) {
+		super(cliente);
 	}
-
+	
 	@Override
-	public void extrato() {
-
-		System.out.println("Extrato da Conta Corrente");
-		super.informacoesExtrato();
+	public void extrato(Cliente cliente, Conta conta) {
+		InformacoesExtrato extrato = new InformacoesExtrato();
+		extrato.tirarExtrato(cliente, conta);
 	}
 
 	

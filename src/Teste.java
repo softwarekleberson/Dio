@@ -1,27 +1,21 @@
 
 public class Teste {
-	public static void main(String[] args) {
+	public static void main(String[] args) throws TamanhoMinimo {
 		
-		Cliente kleberson = new Cliente();
-		kleberson.setNome("kleberson");
+		Cliente c1 = new Cliente("kleberson");
+		ContaCorrente cc = new ContaCorrente(c1);
+					
+		Cliente kaw = new Cliente("kaw");
+		ContaPoupanca cp = new ContaPoupanca(kaw);
 		
-		Cliente kaw = new Cliente();
-		kaw.setNome("kaw");
+		cc.depositar(1);
 		
-		Cliente chica = new Cliente();
-		chica.setNome("chica");
+		cp.depositar(5000);
+		cp.sacar(1000);
+		cp.transferir(cc, 2000);
 		
-		Conta cc = new ContaCorrente(kleberson,2500);
-		cc.depositar(500);
+		cp.extrato(kaw, cp);
+		cc.extrato(c1, cc);
 		
-		Conta cp = new ContaPoupanca(kaw,1000);
-		cp.transferir(cc, 500);
-		
-		Conta conta = new ContaPoupanca(chica,150);
-		conta.sacar(100);
-		
-		cc.extrato();
-		cp.extrato();
-		conta.extrato();
 	}
 }

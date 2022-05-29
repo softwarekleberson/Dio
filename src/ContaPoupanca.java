@@ -1,15 +1,16 @@
 
-public class ContaPoupanca extends Conta{
+public final class ContaPoupanca extends Conta implements IExtrato{
 
-	public ContaPoupanca(Cliente cliente, double saldo) {
-		super(cliente, saldo);
+	private Cliente cliente;
+	private ContaPoupanca contaPoupanca;
+	
+	public ContaPoupanca(Cliente cliente) {
+		super(cliente);
 	}
 
 	@Override
-	public void extrato() {
-
-		System.out.println("Extrato da Conta Corrente");
-		super.informacoesExtrato();
+	public void extrato(Cliente cliente, Conta conta) {
+		InformacoesExtrato extrato = new InformacoesExtrato();
+		extrato.tirarExtrato(cliente, conta);
 	}
-
 }
