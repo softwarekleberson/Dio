@@ -12,7 +12,8 @@ public class InformacoesExtrato {
 		System.out.println("Saldo " + conta.getSaldo());
 		
 		System.out.println("--------Fim-----------");
-		
+				
 	}
+
 }
 

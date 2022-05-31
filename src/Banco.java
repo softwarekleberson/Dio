@@ -11,18 +11,28 @@ public class Banco {
 	private List<Conta> conta = new ArrayList<>();
 	
 	
-	public Banco(String nome, Set<Cliente> clientes, List<Conta> conta) {
+	public Banco(String nome) {
 		super();
 		
 		setNome(nome);
-		
-		this.clientes = clientes;
-		this.conta = conta;
 	}
 	
-	public void adiconaConta(Conta conta) {
-		this.conta.add(conta);
+	public void adiconaConta(Conta obj) {
+		this.conta.add(obj);
 	}
+	
+	public void removerConta(Conta obj) {
+		this.conta.remove(obj);
+	}
+	
+	public int countConta() {
+		return this.conta.size();
+	}
+	
+	public Conta getPosicicaoConta(int i) {
+		return this.conta.get(i);
+	}
+	
 	
 	public void adiconaCliente(Cliente cliente) {
 		this.clientes.add(cliente);
@@ -51,6 +61,6 @@ public class Banco {
 	public void setConta(List<Conta> conta) {
 		this.conta = conta;
 	}
-	
+
 	
 }

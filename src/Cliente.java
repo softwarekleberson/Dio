@@ -32,4 +32,10 @@ public class Cliente {
 		return extrato;
 	}
 
+	@Override
+	public String toString() {
+		return "Cliente [nome=" + nome + ", conta=" + conta + ", extrato=" + extrato + "]";
+	}
+
+	
 }

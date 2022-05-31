@@ -17,5 +17,17 @@ public class Teste {
 		cp.extrato(kaw, cp);
 		cc.extrato(c1, cc);
 		
+		Banco b1 = new Banco("santarder");
+		b1.adiconaCliente(kaw);
+		b1.adiconaCliente(c1);
+		
+		b1.adiconaConta(cp);
+		b1.adiconaConta(cc);
+		System.out.println("Total de contas " + b1.countConta());
+		System.out.println(b1.getPosicicaoConta(0));
+		b1.removerConta(cp);
+		System.out.println("Total de contas " + b1.countConta());
+
+				
 	}
 }

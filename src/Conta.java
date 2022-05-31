@@ -70,5 +70,12 @@ public abstract class Conta implements IConta {
 	public InformacoesExtrato getExtrato() {
 		return extrato;
 	}
+
+	@Override
+	public String toString() {
+		return "Conta [agencia=" + agencia + ", numero=" + numero + ", saldo=" + saldo + ", clientes=" + clientes
+				+ ", extrato=" + extrato + "]";
+	}
+	
 	
 }
